@@ -1,0 +1,8 @@
+#! /bin/bash
+
+if [ $# -lt 1 ]; then
+  echo Launch ubuntu profile on remote machine image, with port 3000 binding
+  echo USAGE:  saasstart [servername]
+else
+  ssh -L *:3000:localhost:3000 ubuntu@$1
+fi
