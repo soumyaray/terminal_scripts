@@ -1,12 +1,12 @@
 #!/usr/bin/env ruby
 
-fail ArgumentError, "Usage:  prepend [prefix] [match]\n" if ARGV.count != 2
+fail ArgumentError, "Usage:  prepend [prefix] [match]\n" if ARGV.count < 2
 
 prefix = ARGV[0]
-match = ARGV[1]
-files = `ls #{match}`.split(/\n/)
+files = ARGV[1..ARGV.count]
+
 files.each do |name|
   new_name = prefix + name
   `mv #{name} #{new_name}`
-  puts "#{name} ==> #{new_name}#"
+  puts "#{name} ==> #{new_name}"
 end
