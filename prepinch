@@ -1,9 +1,10 @@
 #!/usr/bin/env ruby
 
-fail ArgumentError, "Usage:  prepinch [prefix]\n" if ARGV.count == 0
+fail ArgumentError, "Usage:  prepinch [prefix] [match]\n" if ARGV.count < 2
 
 prefix = ARGV[0]
-files=`ls`.split(/\n/)
+files = ARGV[1..ARGV.count]
+
 files.each do |name|
   new_name = name.gsub(prefix, '')
   `mv #{name} #{new_name}`
